@@ -13,7 +13,7 @@ const app = express();
 
 
 //settings
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3000); //Esto es para un deploy en el servidor, al puerto que se nos asigne. 
 
 //middlewares
 app.use(morgan('dev'));
@@ -22,7 +22,7 @@ app.use(express.json())
 //routes
 app.use('/api/task',taskRoutes);
 
-//staticFiles
+//staticFiles. Para encontrar la carpeta de las paginas estaticas
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
