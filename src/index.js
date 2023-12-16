@@ -6,7 +6,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
-import taskRoutes from "./routes/task.routes.js";
+import {router, router2} from "./routes/task.routes.js";
+
 
 const app = express();
 
@@ -20,7 +21,8 @@ app.use(morgan('dev'));
 app.use(express.json())
 
 //routes
-app.use('/api/task',taskRoutes);
+app.use('/api/task',router);
+app.use('/v', router2)
 
 //staticFiles. Para encontrar la carpeta de las paginas estaticas
 const __filename = fileURLToPath(import.meta.url);

@@ -8,4 +8,11 @@ router.get('/', (req, res)=>{
     })
 })
 
-export default router;
+const router2 = express.Router();
+router2.get('/', (req, res)=>{
+    res.json({
+        'version': 'v1.0.0dev'
+    })
+})
+
+export {router, router2};
