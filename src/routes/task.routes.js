@@ -1,11 +1,17 @@
 import express from "express";
+import task from "../models/task.js";
 
 const router = express.Router();
 
-router.get('/', (req, res)=>{
-    res.json({
-        status: 'API Works!'
-    })
+router.get('/', async (req, res)=>{
+    const tasks = await task.find();
+    console.log(tasks)
+    res.json(tasks)
+})
+
+router.post('/', async (req, res)=>{
+    console.log(req.body);
+    res.json('received');
 })
 
 const router2 = express.Router();

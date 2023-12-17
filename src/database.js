@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
 
-mongoose.connect();
+const URI = 'mongodb://localhost/PersonalRegister'
 
- <3
+mongoose.connect(URI)
+    .then(db=>console.log('DB is connected'))
+    .catch(err=>console.error(err));
+
+export default mongoose;

@@ -8,6 +8,7 @@ import { dirname } from "path";
 
 import {router, router2} from "./routes/task.routes.js";
 
+import mongoose from "./database.js";
 
 const app = express();
 
