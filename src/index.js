@@ -25,7 +25,7 @@ app.use(express.json())
 app.use('/api/task',router);
 app.use('/v', router2)
 
-//staticFiles. Para encontrar la carpeta de las paginas estaticas
+//staticFiles. Para encontrar la carpeta de las paginas estáticas
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 

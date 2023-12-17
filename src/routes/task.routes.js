@@ -9,10 +9,31 @@ router.get('/', async (req, res)=>{
     res.json(tasks)
 })
 
+router.get('/:id', async(req, res)=>{
+    const Task = await task.findById(req.params.id);
+    res.json(Task);
+
+});
+
 router.post('/', async (req, res)=>{
-    console.log(req.body);
-    res.json('received');
+    const { title, description } = req.body;
+    const Task= new task({title, description})
+    await Task.save();
+    console.log(Task);
+    res.json({status: 'tarea guardada'});
 })
+
+router.put('/:id', async (req, res)=>{
+    const { title, description } = req.body;
+    const newTask = {title, description};
+    await task.findByIdAndUpdate(req.params.id, newTask);
+    res.json({status: "tarea actualizada"});
+});
+
+router.delete('/:id', async (req, res)=>{
+    await task.findByIdAndDelete(req.params.id);
+    res.json({status:"tarea eliminada"});
+});
 
 const router2 = express.Router();
 router2.get('/', (req, res)=>{
@@ -21,4 +42,4 @@ router2.get('/', (req, res)=>{
     })
 })
 
-export {router, router2};
+export {router, router2}
